@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoneHisab License Generator</title>
+  <style>
+    :root {
+      --bg-dark: #0f111a;
+      --bg-card: rgba(30, 34, 51, 0.6);
+      --primary: #8a2be2;
+      --primary-hover: #9d4edd;
+      --accent: #00f0ff;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="password"] {
+      width: 100%;
+      background: rgba(15, 17, 26, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .toggle-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+
+    .toggle-group label {
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+
+    button.btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+    }
+
+    button.btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(138, 43, 226, 0.4);
+    }
+
+    button.btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .output-section {
+      margin-top: 24px;
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .output-section h3 {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .json-box {
+      background: rgba(10, 11, 18, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 12px;
+      overflow-x: auto;
+      white-space: pre;
+      color: #a78bfa;
+      max-height: 250px;
+      margin-bottom: 12px;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button.btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button.btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--success);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>FoneHisab</h1>
+    <p class="subtitle">Client-Side License Generator Utility</p>
+
+    <div class="form-group">
+      <label for="secret-key">Secret Key</label>
+      <input type="password" id="secret-key" value="REPLACE_WITH_YOUR_SECRET_KEY_MIN_32_CHARS" placeholder="Enter Secret Key">
+    </div>
+
+    <div class="form-group">
+      <label for="machine-id">Machine Fingerprint ID</label>
+      <input type="text" id="machine-id" placeholder="Enter 64-char fingerprint">
+    </div>
+
+    <div class="form-group">
+      <label for="shop-name">Shop Name</label>
+      <input type="text" id="shop-name" placeholder="Enter Shop Name (e.g. Neo Mobiles)">
+    </div>
+
+    <div class="toggle-group">
+      <input type="checkbox" id="no-expiry" checked>
+      <label for="no-expiry">Lifetime License (No Expiry)</label>
+    </div>
+
+    <div class="form-group" id="days-container" style="display: none;">
+      <label for="days">Days Until Expiry</label>
+      <input type="number" id="days" value="365" min="1">
+    </div>
+
+    <button class="btn-primary" onclick="generateLicense()">Generate License</button>
+
+    <div class="output-section" id="output-section">
+      <h3>License Details</h3>
+      <div class="json-box" id="json-box"></div>
+      <div class="action-row">
+        <button class="btn-secondary" onclick="copyToClipboard()">Copy JSON</button>
+        <button class="btn-secondary" onclick="downloadLicenseFile()">Download .lic</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script>
+    const noExpiryCheckbox = document.getElementById('no-expiry');
+    const daysContainer = document.getElementById('days-container');
+
+    noExpiryCheckbox.addEventListener('change', (e) => {
+      daysContainer.style.display = e.target.checked ? 'none' : 'block';
+    });
+
+    let generatedLicenseObject = null;
+
+    async function hmacSha256(key, message) {
+      const enc = new TextEncoder();
+      const keyData = enc.encode(key);
+      const msgData = enc.encode(message);
+      
+      const cryptoKey = await window.crypto.subtle.importKey(
+        "raw",
+        keyData,
+        { name: "HMAC", hash: { name: "SHA-256" } },
+        false,
+        ["sign"]
+      );
+      
+      const signature = await window.crypto.subtle.sign(
+        "HMAC",
+        cryptoKey,
+        msgData
+      );
+      
+      const hashArray = Array.from(new Uint8Array(signature));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      return hashHex;
+    }
+
+    async function generateLicense() {
+      const secretKey = document.getElementById('secret-key').value.trim();
+      const machineId = document.getElementById('machine-id').value.trim();
+      const shopName = document.getElementById('shop-name').value.trim();
+      const noExpiry = noExpiryCheckbox.checked;
+      const daysInput = document.getElementById('days').value;
+
+      if (!secretKey) {
+        alert('Please enter your Secret Key.');
+        return;
+      }
+      if (!machineId) {
+        alert('Please enter the Machine Fingerprint ID.');
+        return;
+      }
+      if (!shopName) {
+        alert('Please enter the Shop Name.');
+        return;
+      }
+
+      const issued_at = new Date().toISOString();
+      let expires_at = null;
+
+      if (!noExpiry) {
+        const days = parseInt(daysInput, 10);
+        if (isNaN(days) || days <= 0) {
+          alert('Please enter a valid number of days.');
+          return;
+        }
+        const expDate = new Date();
+        expDate.setDate(expDate.getDate() + days);
+        expires_at = expDate.toISOString();
+      }
+
+      const payload = {
+        machine_id: machineId,
+        issued_at,
+        expires_at,
+        shop_name: shopName,
+      };
+
+      const dataToSign = JSON.stringify(payload);
+      
+      try {
+        const sig = await hmacSha256(secretKey, dataToSign);
+        generatedLicenseObject = {
+          ...payload,
+          sig
+        };
+
+        const jsonStr = JSON.stringify(generatedLicenseObject, null, 2);
+        document.getElementById('json-box').textContent = jsonStr;
+        document.getElementById('output-section').style.display = 'block';
+      } catch (err) {
+        alert('Error generating signature: ' + err.message);
+      }
+    }
+
+    function copyToClipboard() {
+      if (!generatedLicenseObject) return;
+      const text = JSON.stringify(generatedLicenseObject, null, 2);
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('License JSON copied!');
+      }).catch(err => {
+        alert('Failed to copy: ' + err);
+      });
+    }
+
+    function downloadLicenseFile() {
+      if (!generatedLicenseObject) return;
+      const text = JSON.stringify(generatedLicenseObject, null, 2);
+      const blob = new Blob([text], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'license.lic';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
