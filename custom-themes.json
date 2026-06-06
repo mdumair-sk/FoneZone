@@ -1,0 +1,154 @@
+[
+  {
+    "id": "phonezone-tech-gold",
+    "label": "\ud83d\udcf1 Phone Zone Tech Gold",
+    "fonts": {
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "heading": "Space Grotesk"
+    },
+    "vars": {
+      "bg": "#0A0A0A",
+      "surface": "#181818",
+      "border": "#2C2C2C",
+      "text": "#FFFFFF",
+      "primary": "#F4D547",
+      "success": "#22C55E",
+      "danger": "#E52420",
+      "warning": "#F59E0B"
+    }
+  },
+  {
+    "id": "phonezone-tech-gold-light",
+    "label": "\u2600\ufe0f Phone Zone Tech Gold Light",
+    "fonts": {
+      "body": "Manrope",
+      "mono": "JetBrains Mono",
+      "heading": "Space Grotesk"
+    },
+    "vars": {
+      "bg": "#FAF8F2",
+      "surface": "#FFFFFF",
+      "border": "#E7E2D3",
+      "text": "#1B1B1B",
+      "primary": "#D9B622",
+      "success": "#22C55E",
+      "danger": "#E52420",
+      "warning": "#F59E0B"
+    }
+  },
+  {
+    "id": "phonezone-neon",
+    "label": "\u26a1 Phone Zone Neon",
+    "fonts": {
+      "body": "Outfit",
+      "mono": "JetBrains Mono",
+      "heading": "Orbitron"
+    },
+    "vars": {
+      "bg": "#050505",
+      "surface": "#111111",
+      "border": "#252525",
+      "text": "#FFFFFF",
+      "primary": "#FFD400",
+      "success": "#00FFB2",
+      "danger": "#FF3B3B",
+      "warning": "#FF9800"
+    }
+  },
+  {
+    "id": "phonezone-flagship",
+    "label": "\ud83d\udc51 Phone Zone Flagship",
+    "fonts": {
+      "body": "DM Sans",
+      "mono": "IBM Plex Mono",
+      "heading": "Clash Display"
+    },
+    "vars": {
+      "bg": "#0D0D0D",
+      "surface": "#1A1A1A",
+      "border": "#303030",
+      "text": "#FAFAFA",
+      "primary": "#E8C547",
+      "success": "#34C759",
+      "danger": "#FF453A",
+      "warning": "#FF9F0A"
+    }
+  },
+  {
+    "id": "phonezone-crimson",
+    "label": "\ud83d\udd34 Phone Zone Crimson",
+    "fonts": {
+      "body": "Plus Jakarta Sans",
+      "mono": "JetBrains Mono",
+      "heading": "Sora"
+    },
+    "vars": {
+      "bg": "#0B0B0C",
+      "surface": "#18181B",
+      "border": "#2A2A31",
+      "text": "#FFFFFF",
+      "primary": "#E52420",
+      "success": "#22C55E",
+      "danger": "#FF4D4D",
+      "warning": "#F59E0B"
+    }
+  },
+  {
+    "id": "phonezone-crimson-light",
+    "label": "\ud83c\udf24\ufe0f Phone Zone Crimson Light",
+    "fonts": {
+      "body": "Plus Jakarta Sans",
+      "mono": "JetBrains Mono",
+      "heading": "Sora"
+    },
+    "vars": {
+      "bg": "#FCFAFA",
+      "surface": "#FFFFFF",
+      "border": "#E8DCDC",
+      "text": "#1A1A1A",
+      "primary": "#D62828",
+      "success": "#16A34A",
+      "danger": "#E52420",
+      "warning": "#D97706"
+    }
+  },
+  {
+    "id": "phonezone-ruby-black",
+    "label": "\u2666\ufe0f Phone Zone Ruby Black",
+    "fonts": {
+      "body": "Outfit",
+      "mono": "IBM Plex Mono",
+      "heading": "Exo 2"
+    },
+    "vars": {
+      "bg": "#090909",
+      "surface": "#151515",
+      "border": "#2B2B2B",
+      "text": "#F8F8F8",
+      "primary": "#C1121F",
+      "success": "#2DC653",
+      "danger": "#FF595E",
+      "warning": "#FFB703"
+    }
+  },
+  {
+    "id": "phonezone-executive",
+    "label": "\ud83d\udda4 Phone Zone Executive",
+    "fonts": {
+      "body": "DM Sans",
+      "mono": "JetBrains Mono",
+      "heading": "Space Grotesk"
+    },
+    "vars": {
+      "bg": "#101010",
+      "surface": "#1C1C1C",
+      "border": "#333333",
+      "text": "#FFFFFF",
+      "primary": "#D4AF37",
+      "success": "#22C55E",
+      "danger": "#DC2626",
+      "warning": "#F59E0B"
+    }
+  }
+]
