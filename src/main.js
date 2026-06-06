@@ -873,12 +873,6 @@ function buildShell() {
                 transition: background 0.15s, border-color 0.15s, color 0.15s;
                 opacity: 0.6;
               "
-              onmouseover="if(!this.classList.contains('nav-item--active')){
-                this.style.opacity='1';
-                this.style.background='rgba(255,255,255,0.03)';}"
-              onmouseout="if(!this.classList.contains('nav-item--active')){
-                this.style.opacity='0.6';
-                this.style.background='transparent';}"
             >
               <span style="font-size: 15px; line-height: 1; flex-shrink: 0;">${item.icon}</span>
               <span>${item.label}</span>
