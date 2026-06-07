@@ -280,6 +280,9 @@ window.setupCustomSelects = function setupCustomSelects(container) {
 
     const dropdown = document.createElement('div');
     dropdown.className = 'fh-select-dropdown fh-dropdown';
+    if (select.dataset.dropdownDir === 'up') {
+      dropdown.classList.add('fh-select-dropdown--up');
+    }
     wrapper.appendChild(dropdown);
 
     const buildOptions = () => {
@@ -710,6 +713,11 @@ function injectGlobalStyles() {
       z-index: 9999;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
       box-sizing: border-box;
+    }
+    
+    .fh-select-dropdown--up {
+      top: auto;
+      bottom: calc(100% + 4px);
     }
     
     [data-theme="light"] .fh-select-dropdown {

@@ -10,7 +10,6 @@ import { printInvoice } from '../utils/print.js';
 import { icons } from '../utils/icons.js';
 
 const CATEGORIES = ['New Phone', 'Accessory', 'Used Phone', 'Repair Service'];
-const PAGE_SIZE  = 50;
 
 // ── Tiny utilities ────────────────────────────────────────────────────────────
 
@@ -61,6 +60,7 @@ const state = {
   sortDir:     'asc',
   searchA:     '',
   pageA:       1,
+  pageSizeA:   10,
   // Tab C
   activeSales: [],
   filteredC:   [],
@@ -128,10 +128,10 @@ function colHeader(col, label, container) {
 function renderTableA(container) {
   applyFilterSort();
   const total  = state.filteredA.length;
-  const pages  = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const pages  = Math.max(1, Math.ceil(total / state.pageSizeA));
   state.pageA  = Math.min(state.pageA, pages);
-  const start  = (state.pageA - 1) * PAGE_SIZE;
-  const rows   = state.filteredA.slice(start, start + PAGE_SIZE);
+  const start  = (state.pageA - 1) * state.pageSizeA;
+  const rows   = state.filteredA.slice(start, start + state.pageSizeA);
 
   const cols = [
     { key: 'name',           label: 'Name'           },
@@ -194,8 +194,16 @@ function renderTableA(container) {
 
     <!-- Pagination -->
     <div style="display:flex;align-items:center;justify-content:space-between;
-      padding:14px 4px;font-size:12px;opacity:0.6;">
-      <span>${total} item${total !== 1 ? 's' : ''} — Page ${state.pageA} of ${pages}</span>
+      padding:14px 4px;font-size:12px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="opacity:0.6;">${total} item${total !== 1 ? 's' : ''} — Page ${state.pageA} of ${pages}</span>
+        <select id="page-size-select" class="fh-input" style="width:130px;" data-dropdown-dir="up">
+          <option value="10" ${state.pageSizeA === 10 ? 'selected' : ''}>10 per page</option>
+          <option value="20" ${state.pageSizeA === 20 ? 'selected' : ''}>20 per page</option>
+          <option value="50" ${state.pageSizeA === 50 ? 'selected' : ''}>50 per page</option>
+          <option value="100" ${state.pageSizeA === 100 ? 'selected' : ''}>100 per page</option>
+        </select>
+      </div>
       <div style="display:flex;gap:8px;">
         <button class="fh-btn fh-btn-ghost" id="page-prev"
           style="padding:5px 14px;font-size:11px;display:flex;align-items:center;gap:4px;"
@@ -227,12 +235,19 @@ function renderTableA(container) {
   });
 
   // Pagination
+  table.querySelector('#page-size-select')?.addEventListener('change', (e) => {
+    state.pageSizeA = parseInt(e.target.value);
+    state.pageA = 1;
+    renderTableA(container);
+  });
   table.querySelector('#page-prev')?.addEventListener('click', () => {
     if (state.pageA > 1) { state.pageA--; renderTableA(container); }
   });
   table.querySelector('#page-next')?.addEventListener('click', () => {
     if (state.pageA < pages) { state.pageA++; renderTableA(container); }
   });
+
+  window.setupCustomSelects(table);
 
   // Edit buttons
   table.querySelectorAll('.btn-edit-item').forEach(btn => {
@@ -361,6 +376,12 @@ function openItemModal(item, container) {
       const errEl = m.querySelector('#im-error');
       const name  = m.querySelector('#im-name').value.trim();
       if (!name) { errEl.textContent = 'Item name is required.'; return; }
+
+      const exists = state.items.some(i => i.name.toLowerCase() === name.toLowerCase() && i.id !== item?.id);
+      if (exists) {
+        errEl.textContent = 'An item with this name already exists.';
+        return;
+      }
 
       const payload = {
         name,

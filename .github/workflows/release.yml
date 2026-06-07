@@ -38,7 +38,7 @@ jobs:
         with:
           files: dist-installer/*.exe
           tag_name: "build-${{ github.run_number }}"
-          name: "Automated Build ${{ github.run_number }}"
+          name: "Phone Zone Build ${{ github.run_number }}"
           body: "Automated release triggered by push to main branch. Commit: ${{ github.sha }}"
           draft: false
           prerelease: false
