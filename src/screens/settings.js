@@ -179,11 +179,10 @@ function sectionTheme(s) {
 
   // Combine with built-in
   const allThemes = [
-    { id: 'dark', ...window.THEMES.dark },
-    { id: 'light', ...window.THEMES.light },
-    { id: 'cyberpunk', ...window.THEMES.cyberpunk },
-    { id: 'nord', ...window.THEMES.nord },
-    { id: 'mocha', ...window.THEMES.mocha },
+    { id: 'red-light', ...window.THEMES['red-light'] },
+    { id: 'red-dark', ...window.THEMES['red-dark'] },
+    { id: 'gold-light', ...window.THEMES['gold-light'] },
+    { id: 'gold-dark', ...window.THEMES['gold-dark'] },
     ...customThemes
   ];
 

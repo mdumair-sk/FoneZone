@@ -39,7 +39,7 @@ export async function initDatabase() {
     ['shop_address', ''],
     ['shop_gstin', ''],
     ['default_gst_rate', '18.0'],
-    ['app_theme', 'dark'],
+    ['app_theme', 'red-light'],
     // SHA-256 of 'admin123'
     ['master_password', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'],
   ];

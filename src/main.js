@@ -33,60 +33,36 @@ window.getSettings = async function getSettings() {
 // ── Theme System ──────────────────────────────────────────────────────────────
 
 window.THEMES = {
-  dark: {
-    label: '🌑 Dark',
+  'red-light': {
+    label: '🔴 Red Light',
     fonts: { body: 'Inter', mono: 'JetBrains Mono', heading: 'Inter' },
     vars: {
-      bg: '#0D0D0D', surface: '#1A1A1A', border: '#2A2A2A', text: '#E0E0E0', primary: '#00FFB2',
-      success: '#00FFB2', danger: '#FF4444', warning: '#FF8C00'
-    }
-  },
-  light: {
-    label: '☀️ Light',
-    fonts: { body: 'Inter', mono: 'JetBrains Mono', heading: 'Playfair Display' },
-    vars: {
-      bg: '#FAFAFA', surface: '#FFFFFF', border: '#E2E8F0', text: '#0F172A', primary: '#2563EB',
+      bg: '#FAFAFA', surface: '#FFFFFF', border: '#E2E8F0', text: '#0A0A0A', primary: '#E52420',
       success: '#10B981', danger: '#EF4444', warning: '#F59E0B'
     }
   },
-  cyberpunk: {
-    label: '⚡ Cyberpunk',
-    fonts: { body: 'Orbitron', mono: 'Share Tech Mono', heading: 'Orbitron' },
-    vars: {
-      bg: '#0D0D0D', surface: '#111111', border: '#1E1E1E', text: '#E0E0E0', primary: '#00FFB2',
-      success: '#00FFB2', danger: '#FF0055', warning: '#FFCC00'
-    }
-  },
-  nord: {
-    label: '❄️ Nord',
-    fonts: { body: 'Nunito', mono: 'JetBrains Mono', heading: 'Nunito' },
-    vars: {
-      bg: '#2E3440', surface: '#3B4252', border: '#434C5E', text: '#ECEFF4', primary: '#88C0D0',
-      success: '#A3BE8C', danger: '#BF616A', warning: '#EBCB8B'
-    }
-  },
-  mocha: {
-    label: '☕ Mocha',
-    fonts: { body: 'Lato', mono: 'Fira Code', heading: 'Playfair Display' },
-    vars: {
-      bg: '#1C1917', surface: '#292524', border: '#3C3835', text: '#E7E5E4', primary: '#FB923C',
-      success: '#A6E3A1', danger: '#F38BA8', warning: '#F9E2AF'
-    }
-  },
-  'midnight-terminal': {
-    label: '🌌 Midnight Terminal',
+  'red-dark': {
+    label: '🔴 Red Dark',
     fonts: { body: 'Inter', mono: 'JetBrains Mono', heading: 'Inter' },
     vars: {
-      bg: '#0B1020', surface: '#141B2D', border: '#26324D', text: '#E6EDF7', primary: '#58A6FF',
-      success: '#4ADE80', danger: '#F87171', warning: '#FBBF24'
+      bg: '#0A0A0A', surface: '#181818', border: '#2A2A2A', text: '#FFFFFF', primary: '#E52420',
+      success: '#00FFB2', danger: '#FF4D4D', warning: '#FF8C00'
     }
   },
-  'neon-ember': {
-    label: '🔥 Neon Ember',
+  'gold-light': {
+    label: '✨ Gold Light',
     fonts: { body: 'Inter', mono: 'JetBrains Mono', heading: 'Inter' },
     vars: {
-      bg: '#0F0A0A', surface: '#1A1212', border: '#332222', text: '#FFF2E8', primary: '#FF7A45',
-      success: '#52E58C', danger: '#FF4D4D', warning: '#FFAE19'
+      bg: '#FAFAFA', surface: '#FFFFFF', border: '#E2E8F0', text: '#0A0A0A', primary: '#D9B622',
+      success: '#10B981', danger: '#EF4444', warning: '#F59E0B'
+    }
+  },
+  'gold-dark': {
+    label: '✨ Gold Dark',
+    fonts: { body: 'Inter', mono: 'JetBrains Mono', heading: 'Inter' },
+    vars: {
+      bg: '#0A0A0A', surface: '#181818', border: '#2A2A2A', text: '#FFFFFF', primary: '#F4D547',
+      success: '#00FFB2', danger: '#FF4D4D', warning: '#FF8C00'
     }
   }
 };
@@ -101,7 +77,7 @@ window.applyTheme = async function applyTheme(themeId) {
       }
     } catch (e) { }
   }
-  if (!themeObj) themeObj = window.THEMES.light;
+  if (!themeObj) themeObj = window.THEMES['red-light'];
 
   document.documentElement.setAttribute('data-theme', themeId);
 
